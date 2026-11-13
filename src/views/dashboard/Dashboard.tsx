@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -20,6 +20,7 @@ import Text2 from "../../components/text/Text2";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import { useNavigate } from "react-router-dom";
+import RewardsCalculator from "../../components/calculator/RewardsCalculator";
 
 const Dashboard = () => {
   const [isPublished, setIsPublished] = useState(false);
@@ -99,63 +100,81 @@ const Dashboard = () => {
       <Box
         sx={{
           minHeight: "calc(100vh - 450px)",
-          backgroundColor: "#fff",
-          padding: "80px 24px",
-          display: "flex",
-          gap: "20px",
+          backgroundColor: theme.palette.mode === 'dark' ? '#0b161a' : '#ffffff',
+          padding: { xs: "24px 16px", sm: "40px 24px", md: "60px 40px" },
+          maxWidth: "1400px",
+          margin: "0 auto",
+          width: "100%",
+          boxSizing: "border-box"
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "#00dbe3",
-              borderRadius: "6px",
-              width: "352px",
-              height: "64px",
-              fontSize: "24px",
-              lineHeight: "60px",
-              textTransform: "uppercase",
-              color: "#ffffff",
-              fontWeight: 700,
-            }}
-          >
-            Sell
-          </Button>
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "#23a2bb",
-              borderRadius: "6px",
-              width: "352px",
-              height: "64px",
-              fontSize: "24px",
-              lineHeight: "60px",
-              textTransform: "uppercase",
-              color: "#ffffff",
-              fontWeight: 700,
-            }}
-          >
-            Buy
-          </Button>
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "#173039",
-              borderRadius: "6px",
-              width: "352px",
-              height: "64px",
-              fontSize: "24px",
-              lineHeight: "60px",
-              textTransform: "uppercase",
-              color: "#ffffff",
-              fontWeight: 700,
-            }}
-          >
-            Exchange
-          </Button>
-        </Box>
-        <Box sx={{ overflow: "auto", width: { sm: "100%" } }}>
+        {/* Staking & Yield Rewards Calculator */}
+        <RewardsCalculator />
+
+        {/* Existing Market Actions & Offers Table */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            gap: "24px",
+            mt: 4,
+            width: "100%"
+          }}
+        >
+          <Box sx={{ display: "flex", flexDirection: { xs: "row", md: "column" }, gap: "16px", flexWrap: "wrap", minWidth: { md: "260px" } }}>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#00dbe3",
+                borderRadius: "6px",
+                width: { xs: "100%", sm: "auto", md: "100%" },
+                height: "56px",
+                fontSize: "20px",
+                lineHeight: "56px",
+                textTransform: "uppercase",
+                color: "#ffffff",
+                fontWeight: 700,
+                flex: { xs: "1 1 120px", md: "none" }
+              }}
+            >
+              Sell
+            </Button>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#23a2bb",
+                borderRadius: "6px",
+                width: { xs: "100%", sm: "auto", md: "100%" },
+                height: "56px",
+                fontSize: "20px",
+                lineHeight: "56px",
+                textTransform: "uppercase",
+                color: "#ffffff",
+                fontWeight: 700,
+                flex: { xs: "1 1 120px", md: "none" }
+              }}
+            >
+              Buy
+            </Button>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#173039",
+                borderRadius: "6px",
+                width: { xs: "100%", sm: "auto", md: "100%" },
+                height: "56px",
+                fontSize: "20px",
+                lineHeight: "56px",
+                textTransform: "uppercase",
+                color: "#ffffff",
+                fontWeight: 700,
+                flex: { xs: "1 1 120px", md: "none" }
+              }}
+            >
+              Exchange
+            </Button>
+          </Box>
+          <Box sx={{ overflowX: "auto", width: "100%", flex: 1 }}>
           <Table
             aria-label="simple table"
             sx={{
@@ -359,6 +378,7 @@ const Dashboard = () => {
         </Box>
       </Box>
     </Box>
+  </Box>
   );
 };
 
