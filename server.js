@@ -8,6 +8,10 @@ const app = express();
 // Connect Database
 // connectDB();
 
+// Enable CORS
+app.use(cors());
+app.options('*', cors());
+
 // Init Middleware
 app.use(express.json());
 
